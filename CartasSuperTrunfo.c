@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+// Aqui definimos como vai ser a nossa carta.
+// É como se fosse uma "forma" para criar as cartas.
 typedef struct {
     char estado[3];
     char nomeCidade[50];
@@ -13,11 +15,14 @@ typedef struct {
     float pib_per_capita;
 } Carta;
 
+// A função principal do nosso programa. Tudo acontece aqui dentro.
 int main() {
+    // Criamos as duas cartas que vamos usar no jogo.
     Carta carta1;
     Carta carta2;
     int atributo_para_comparar;
 
+    // --- Parte de Cadastrar a Carta 1 ---
     printf("\n--- Vamos cadastrar a primeira carta ---\n");
     
     printf("Digite a sigla do estado (ex: PE): ");
@@ -41,6 +46,7 @@ int main() {
     printf("Digite a area (em km2, use . para decimais): ");
     scanf("%f", &carta1.area); 
 
+    // Agora calculamos os valores que faltam para a Carta 1
     if (carta1.area > 0) {
         carta1.densidade_populacional = (float)carta1.populacao / carta1.area;
     } else {
@@ -53,6 +59,7 @@ int main() {
         carta1.pib_per_capita = 0.0;
     }
 
+    // --- Parte de Cadastrar a Carta 2 ---
     printf("\n--- Agora vamos cadastrar a segunda carta ---\n");
 
     printf("Digite a sigla do estado (ex: PE): ");
@@ -76,6 +83,7 @@ int main() {
     printf("Digite a area (em km2, use . para decimais): ");
     scanf("%f", &carta2.area); 
 
+    // Calculamos os valores que faltam para a Carta 2
     if (carta2.area > 0) {
         carta2.densidade_populacional = (float)carta2.populacao / carta2.area;
     } else {
@@ -88,6 +96,7 @@ int main() {
         carta2.pib_per_capita = 0.0;
     }
 
+    // --- Agora exibimos as cartas para ver se deu tudo certo ---
     printf("\n--- Dados da Carta 1 ---\n");
     printf("Estado: %s\n", carta1.estado);
     printf("Cidade: %s\n", carta1.nomeCidade);
@@ -102,11 +111,13 @@ int main() {
     printf("PIB: %.2f\n", carta2.pib);
     printf("Densidade Populacional: %.2f hab/km2\n", carta2.densidade_populacional);
 
+    // 1: Populacao, 2: Area, 3: PIB, 4: Densidade, 5: PIB per capita
     atributo_para_comparar = 1;
 
+    // --- Fazemos a comparação ---
     printf("\n--- Batalha (Atributo: Populacao) ---\n");
     
-    if (atributo_para_comparar == 1) {
+    if (atributo_para_comparar == 1) { // Compara a População
         printf("Carta 1 (%s): %ld\n", carta1.nomeCidade, carta1.populacao);
         printf("Carta 2 (%s): %ld\n", carta2.nomeCidade, carta2.populacao);
         if (carta1.populacao > carta2.populacao) {
@@ -116,8 +127,10 @@ int main() {
         } else {
             printf("Resultado: Empate!\n");
         }
-    } else if (atributo_para_comparar == 2) {
+    } else if (atributo_para_comparar == 2) { // Compara a Área
+
     }
+    
 
     return 0;
 }
