@@ -1,22 +1,71 @@
 #include <stdio.h>
+#include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Estrutura para representar uma carta do Super Trunfo
+typedef struct {
+    char estado[3];
+    char nomeCidade[50];
+    char codigoCarta[10];
+    long populacao;
+    float pib;
+    char pontosTuristicos[100];
+    float area;
+} Carta;
 
+
+void cadastrar_carta(Carta *carta, int numero_carta) {
+    printf("\n--- Cadastro da Carta %d ---\n", numero_carta);
+    
+    printf("Digite a sigla do estado (ex: PE): ");
+    scanf("%2s", carta->estado); 
+
+    printf("Digite o nome da cidade: ");
+    scanf(" %49[^\n]", carta->nomeCidade); 
+
+    printf("Digite o codigo da carta: ");
+    scanf(" %9s", carta->codigoCarta); 
+
+    printf("Digite a populacao: ");
+    scanf("%ld", &carta->populacao); 
+
+    printf("Digite o PIB: ");
+    scanf("%f", &carta->pib); 
+
+    printf("Digite os pontos turisticos: ");
+    scanf(" %99[^\n]", carta->pontosTuristicos); 
+
+    printf("Digite a area (em km2): ");
+    scanf("%f", &carta->area); 
+}
+
+// --- Função para Exibir uma Carta ---
+// Esta função recebe uma carta e exibe seus dados.
+void exibir_carta(Carta carta, int numero_carta) {
+    printf("\n--- Dados da Carta %d ---\n", numero_carta);
+    printf("Estado: %s\n", carta.estado);
+    printf("Cidade: %s\n", carta.nomeCidade);
+    printf("Codigo: %s\n", carta.codigoCarta);
+    printf("Populacao: %ld\n", carta.populacao);
+    printf("PIB: %.2f\n", carta.pib);
+    printf("Pontos Turisticos: %s\n", carta.pontosTuristicos);
+    printf("Area: %.2f\n", carta.area);
+}
+
+// --- Função Principal ---
+// O ponto de partida do programa
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    Carta carta1;
+    Carta carta2;
+
+    // Chama a função para cadastrar a primeira carta
+    cadastrar_carta(&carta1, 1);
+
+    // Chama a função para cadastrar a segunda carta
+    cadastrar_carta(&carta2, 2);
+
+    // Exibe os dados das duas cartas
+    exibir_carta(carta1, 1);
+    exibir_carta(carta2, 2);
 
     return 0;
 }
