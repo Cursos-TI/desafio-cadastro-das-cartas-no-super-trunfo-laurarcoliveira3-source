@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// Estrutura para representar uma carta do Super Trunfo
 typedef struct {
     char estado[3];
     char nomeCidade[50];
@@ -38,8 +37,6 @@ void cadastrar_carta(Carta *carta, int numero_carta) {
     scanf("%f", &carta->area); 
 }
 
-// --- Função para Exibir uma Carta ---
-// Esta função recebe uma carta e exibe seus dados.
 void exibir_carta(Carta carta, int numero_carta) {
     printf("\n--- Dados da Carta %d ---\n", numero_carta);
     printf("Estado: %s\n", carta.estado);
@@ -51,8 +48,6 @@ void exibir_carta(Carta carta, int numero_carta) {
     printf("Area: %.2f\n", carta.area);
 }
 
-// --- Função Principal ---
-// O ponto de partida do programa
 int main() {
     Carta carta1;
     Carta carta2;
